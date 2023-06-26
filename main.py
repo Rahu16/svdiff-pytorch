@@ -33,7 +33,7 @@ class Request(BaseModel):
     text: str
 
 def process_text(text):
-    image = pipe(text, num_inference_steps=2).images[0]
+    image = pipe(text, num_inference_steps=num_inference_steps).images[0]
     return image
 
 
