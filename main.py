@@ -15,7 +15,7 @@ app = FastAPI()
 
 from svdiff_pytorch import load_unet_for_svdiff, load_text_encoder_for_svdiff
 
-num_inference_steps= os.getenv('num_inference_steps') or 2
+num_inference_steps= int(os.getenv('num_inference_steps')) or 2
 
 pretrained_model_name_or_path = "runwayml/stable-diffusion-v1-5"
 spectral_shifts_ckpt_dir = None
@@ -33,7 +33,7 @@ class Request(BaseModel):
     text: str
 
 def process_text(text):
-    image = pipe(text, num_inference_steps=2).images[0]
+    image = pipe(text, num_inference_steps=num_inference_steps).images[0]
     return image
 
 
