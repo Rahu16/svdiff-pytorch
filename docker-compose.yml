@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  stablediff:
+    build: .
+    container_name: svdiff
+    restart: always
+    environment:
+      num_inference_steps: 2
+    ports:
+      - 3000:3000
